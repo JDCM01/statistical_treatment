@@ -80,5 +80,6 @@ def main():
     print(f"Mean: {mean}")
     print(f"Median: {statistical_median}")
     print(f"Mode: {statistical_mode}")
+    print("Threads finished execution.")
 
 main()
