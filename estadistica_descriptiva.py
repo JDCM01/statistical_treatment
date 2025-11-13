@@ -55,19 +55,34 @@ def mode(data):
             frequency[item] = 1
     max_count = max(frequency.values())
     return max_count
-    
-if __name__ == "__main__":
-    
+
+def analyze_data(df: pd.DataFrame):
     df = read_excel_file()
-    descriptive_statistics_df = compute_descriptive_statistics(df)
-    range_statistics_df = compute_range(df)
-    mode_area_sembrada = mode(df["area_sembrada"])
-    mode_area_cosechada = mode(df["area_cosechada"])
-    mode_produccion = mode(df["produccion"])
-    mode_rendimiento = mode(df["rendimiento"])
-    print("Descriptive Statistics:")
-    print("La moda en hectareas del area sembrada es: ", mode_area_sembrada)
-    print("La moda en hectareas del area cosechada es: ", mode_area_cosechada)
-    print("La moda en toneladas de la produccion es: ", mode_produccion)
-    print("La moda en toneladas por hectarea del rendimiento es: ", mode_rendimiento)
-    print("rango de las estadisticas: ", range_statistics_df)
+    if df is not None:
+        descriptive_statistics_df = compute_descriptive_statistics(df)
+        range_statistics_df = compute_range(df)
+        mode_area_sembrada = mode(df["area_sembrada"])
+        mode_area_cosechada = mode(df["area_cosechada"])
+        mode_produccion = mode(df["produccion"])
+        mode_rendimiento = mode(df["rendimiento"])
+        print("Descriptive Statistics:")
+        print(descriptive_statistics_df)
+        print("La moda en hectareas del area sembrada es: ", mode_area_sembrada)
+        print("La moda en hectareas del area cosechada es: ", mode_area_cosechada)
+        print("La moda en toneladas de la produccion es: ", mode_produccion)
+        print("La moda en toneladas por hectarea del rendimiento es: ", mode_rendimiento)
+        print("rango de las estadisticas: ", range_statistics_df)
+        return df
+    else:
+        return None
+    
+def obtain_data():
+    df = read_excel_file()
+    if df is not None:
+        return df
+    
+analyze_data(read_excel_file())
+
+    
+    
+    
